@@ -6,8 +6,9 @@ import { ProductService } from './product.service';
 @Module({
   imports: [
     ConfigEntityModule.register({ 
+      collectionName: 'collectionforproduct',
       tableName: 'tableforproduct',
-      collectionName: 'collectionforproduct'
+      tableCreatingString: '(_id SERIAL, name VARCHAR(20), price INT)'
     })
   ],
   controllers: [ProductController],

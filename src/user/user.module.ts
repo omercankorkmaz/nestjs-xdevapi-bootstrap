@@ -6,8 +6,9 @@ import { UserService } from './user.service';
 @Module({
   imports: [
     ConfigEntityModule.register({ 
+      collectionName: 'collectionforuser',
       tableName: 'tableforuser',
-      collectionName: 'collectionforuser'
+      tableCreatingString: '(_id SERIAL, name VARCHAR(20), age INT)'
     })
   ],
   controllers: [UserController],

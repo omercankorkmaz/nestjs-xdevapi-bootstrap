@@ -17,7 +17,7 @@ export class ConfigEntityService {
 
     async init() {
         this.collection = await dbInstance.schema.createCollection(this.options.collectionName, { reuseExisting: true });
-        await dbInstance.session.sql(`create table if not exists ${dbconfig.schema}.${this.options.tableName} (_id SERIAL, name VARCHAR(20), price INT)`).execute();
+        await dbInstance.session.sql(`create table if not exists ${dbconfig.schema}.${this.options.tableName} ${this.options.tableCreatingString}`).execute();
         this.table = await dbInstance.schema.getTable(this.options.tableName);
     }
 
