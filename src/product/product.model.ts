@@ -1,10 +1,21 @@
-export class Product {
-    _id?: string;
+import { IsString, IsNotEmpty, IsNumber, IsDefined } from 'class-validator';
+import { Base } from 'src/base/base.model';
+
+export class Product extends Base {
+
+    @IsString()
+    @IsNotEmpty()
+    @IsDefined()
     name: string;
+
+    @IsNumber()
+    @IsNotEmpty()
+    @IsDefined()
     price: number;
 
-    constructor(parameters) {
-        this.name = parameters.name;
-        this.price = parameters.price;
+    setAttributes(params: Product) {
+        this.name = params.name;
+        this.price = params.price;
     }
+
 }

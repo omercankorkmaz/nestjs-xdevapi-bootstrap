@@ -1,8 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-const mysqlx = require('@mysql/xdevapi');
 
 import dbInstance from '../config-db/dbinstance';
-import { dbconfig } from '../config-db/dbconfig';
 
 @Injectable()
 export class ConfigEntityService {
@@ -17,7 +15,7 @@ export class ConfigEntityService {
 
     async init() {
         this.collection = await dbInstance.schema.createCollection(this.options.collectionName, { reuseExisting: true });
-        await dbInstance.session.sql(`create table if not exists ${dbconfig.schema}.${this.options.tableName} ${this.options.tableCreatingString}`).execute();
+        await dbInstance.session.sql(`create table if not exists ${dbInstance.dbConfig.schema}.${this.options.tableName} ${this.options.tableCreatingString}`).execute();
         this.table = await dbInstance.schema.getTable(this.options.tableName);
     }
 

@@ -1,4 +1,4 @@
-export const dbconfig = {
+export const dbConfig = {
     password: 'root',
     user: 'root',
     host: 'localhost',
