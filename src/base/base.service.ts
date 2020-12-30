@@ -13,15 +13,6 @@ export class BaseService<T> {
     this.model = model;
   }
 
-  async insertToCollection(params: any): Promise<string[]> {
-    this.model.setAttributes(params);
-    return this.model.validateObject().then(async () => {
-        return await this.configEntityService.collection.add(this.model).execute().getGeneratedIds();
-    }).catch(error => {
-        return error;
-    });  
-  }
-
   async add(object: T): Promise<string[]> {
     this.model.setAttributes(object);
     return this.model.validateObject().then(async () => {
