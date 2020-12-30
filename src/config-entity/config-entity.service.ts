@@ -8,8 +8,10 @@ export class ConfigEntityService {
     config: any;
     collection: any;
     table: any;
+    model;
 
     constructor(@Inject('CONFIG_OPTIONS') private options) {
+        this.model = this.options.model;
         this.init();
     }
 

@@ -2,7 +2,6 @@ import { IsString, IsNotEmpty, IsNumber, IsDefined } from 'class-validator';
 import { Base } from 'src/base/base.model';
 
 export class Product extends Base {
-
     @IsString()
     @IsNotEmpty()
     @IsDefined()
@@ -12,10 +11,4 @@ export class Product extends Base {
     @IsNotEmpty()
     @IsDefined()
     price: number;
-
-    setAttributes(params: Product) {
-        this.name = params.name;
-        this.price = params.price;
-    }
-
 }

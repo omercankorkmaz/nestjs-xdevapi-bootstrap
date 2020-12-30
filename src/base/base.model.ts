@@ -15,4 +15,11 @@ export class Base {
             });
         });
     }
+
+    setAttributes(params: any) {
+        for (let propertyName in params) {
+            this[propertyName] = params[propertyName];
+        }
+    }
+
 }
